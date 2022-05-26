@@ -27,3 +27,5 @@ Route.get('/', async ({ inertia }) => {
 Route.get('/test', async ({ inertia }) => {
     return inertia.render('Test')
 })
+
+Route.resource('articles', 'ArticlesController')
