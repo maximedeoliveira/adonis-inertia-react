@@ -2,7 +2,7 @@ import React from 'react'
 import { Inertia } from '@inertiajs/inertia'
 import Layout from '../../layout'
 import { Box, VStack, Text, Button, HStack, Spacer } from '@chakra-ui/react'
-import { InertiaLink } from '@inertiajs/inertia-react'
+import { InertiaLink, usePage } from '@inertiajs/inertia-react'
 import { Article } from '@/types/article'
 
 type ListArticlesProps = {
