@@ -49,6 +49,7 @@
         "proxy-addr": "^2.0.7",
         "react": "^18.1.0",
         "react-dom": "^18.1.0",
+        "react-hook-form": "^7.31.2",
         "reflect-metadata": "^0.1.13",
         "source-map-support": "^0.5.21",
         "tabler-icons-react": "^1.48.0"

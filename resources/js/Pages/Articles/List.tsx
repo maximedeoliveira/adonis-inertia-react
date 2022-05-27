@@ -2,26 +2,39 @@ import React from 'react'
 import { Inertia } from '@inertiajs/inertia'
 import Layout from '../../Layout'
 import { Box, VStack, Text, Button, HStack, Spacer } from '@chakra-ui/react'
+import { InertiaLink } from '@inertiajs/inertia-react'
+import Article from '../../../../app/Models/Article'
 
-const ListArticles = (props) => {
+type ListArticlesProps = {
+    articles: Article[]
+}
+
+const ListArticles = (props: ListArticlesProps) => {
     return (
         <>
             <HStack spacing={4} mb={8}>
-                <Text fontWeight="bold" fontSize="2xl">
+                <Text fontWeight="bold" fontSize="4xl">
                     Articles
                 </Text>
                 <Spacer />
-                <Button onClick={() => Inertia.visit('/articles/create')}>
+                <Button
+                    colorScheme="blue"
+                    onClick={() => Inertia.visit('/articles/create')}
+                >
                     Ajouter un article
                 </Button>
             </HStack>
-            <VStack align="left" spacing={6}>
+            <VStack align="left" spacing={8}>
                 {props.articles.length === 0 && <p>Aucun articles</p>}
                 {props.articles.map((article) => (
-                    <Box key={article.id}>
-                        <Text>{article.name}</Text>
-                        <Text>{article.description}</Text>
-                    </Box>
+                    <VStack align="left" spacing={3} key={article.id}>
+                        <InertiaLink href={`/articles/${article.id}`}>
+                            <Text fontWeight="bold" fontSize="2xl">
+                                {article.name}
+                            </Text>
+                        </InertiaLink>
+                        <Text>{article.description.slice(0, 250)}...</Text>
+                    </VStack>
                 ))}
             </VStack>
         </>

@@ -9,7 +9,7 @@ export default class extends BaseSchema {
 
             table.string('name', 255)
 
-            table.string('description')
+            table.text('description')
 
             /**
              * Uses timestamptz for PostgreSQL and DATETIME2 for MSSQL

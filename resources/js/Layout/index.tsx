@@ -1,5 +1,6 @@
 import React from 'react'
 import { Box, ChakraProvider, Container, HStack, Text } from '@chakra-ui/react'
+import { InertiaLink } from '@inertiajs/inertia-react'
 
 const Layout = (props) => {
     return (
@@ -11,7 +12,11 @@ const Layout = (props) => {
                             <Text color="white" fontWeight="bold">
                                 adonis-inertia-react
                             </Text>
-                            <Text color="white">Articles</Text>
+                            <InertiaLink href="/articles">
+                                <Text color="white" cursor="pointer">
+                                    Articles
+                                </Text>
+                            </InertiaLink>
                         </HStack>
                     </Container>
                 </Box>

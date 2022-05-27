@@ -18,11 +18,29 @@ export default class ArticlesController {
         return response.redirect().toPath('/articles')
     }
 
-    public async show({}: HttpContextContract) {}
+    public async show({ inertia, params }: HttpContextContract) {
+        const article = await Article.find(params.id)
 
-    public async edit({}: HttpContextContract) {}
+        return inertia.render('Articles/Show', { article })
+    }
 
-    public async update({}: HttpContextContract) {}
+    public async edit({ inertia, params }: HttpContextContract) {
+        const article = await Article.find(params.id)
 
-    public async destroy({}: HttpContextContract) {}
+        return inertia.render('Articles/Edit', { article })
+    }
+
+    public async update({ response, params, request }: HttpContextContract) {
+        const article = await Article.findOrFail(params.id)
+        await article.merge(request.body()).save()
+
+        return response.redirect().toPath(`/articles/${article.id}`)
+    }
+
+    public async destroy({ response, params }: HttpContextContract) {
+        const article = await Article.findOrFail(params.id)
+        await article.delete()
+
+        return response.redirect().toPath('/articles')
+    }
 }

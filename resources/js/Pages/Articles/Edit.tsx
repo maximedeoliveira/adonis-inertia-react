@@ -1,7 +1,4 @@
 import React, { useState } from 'react'
-import { Inertia } from '@inertiajs/inertia'
-import { ArrowLeft } from 'tabler-icons-react'
-import Layout from '../../Layout'
 import {
     Button,
     FormControl,
@@ -14,15 +11,23 @@ import {
     VStack,
 } from '@chakra-ui/react'
 import { InertiaLink } from '@inertiajs/inertia-react'
+import { ArrowLeft } from 'tabler-icons-react'
 import { useForm } from 'react-hook-form'
+import { Inertia } from '@inertiajs/inertia'
+import Article from '../../../../app/Models/Article'
+import Layout from '../../Layout'
 
-const AddArticles = () => {
+type EditArticleProps = {
+    article: Article
+}
+
+const EditArticle = (props: EditArticleProps) => {
     const [isLoading, setIsLoading] = useState(false)
-    const { register, handleSubmit } = useForm()
+    const { register, handleSubmit } = useForm({ defaultValues: props.article })
 
     const submit = (data) => {
         setIsLoading(true)
-        Inertia.post('/articles', data)
+        Inertia.patch(`/articles/${props.article.id}`, data)
     }
 
     return (
@@ -66,6 +71,6 @@ const AddArticles = () => {
     )
 }
 
-AddArticles.layout = (page) => <Layout children={page} />
+EditArticle.layout = (page) => <Layout children={page} />
 
-export default AddArticles
+export default EditArticle
