@@ -13,9 +13,9 @@ import {
     useDisclosure,
     VStack,
 } from '@chakra-ui/react'
-import Layout from '../../Layout'
+import Layout from '../../layout'
 import { InertiaLink } from '@inertiajs/inertia-react'
-import Article from '../../../../app/Models/Article'
+import { Article } from '@/types/article'
 import { Inertia } from '@inertiajs/inertia'
 
 type ShowArticleProps = {

@@ -3,6 +3,10 @@
     "compilerOptions": {
         "lib": ["DOM"],
         "jsx": "react-jsx",
-        "esModuleInterop": true
+        "esModuleInterop": true,
+        "baseUrl": ".",
+        "paths": {
+            "@/*": ["./*"]
+        }
     }
 }

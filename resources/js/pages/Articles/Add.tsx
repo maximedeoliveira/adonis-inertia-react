@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Inertia } from '@inertiajs/inertia'
 import { ArrowLeft } from 'tabler-icons-react'
-import Layout from '../../Layout'
+import Layout from '../../layout'
 import {
     Button,
     FormControl,

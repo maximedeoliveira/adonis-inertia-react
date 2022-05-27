@@ -14,8 +14,8 @@ import { InertiaLink } from '@inertiajs/inertia-react'
 import { ArrowLeft } from 'tabler-icons-react'
 import { useForm } from 'react-hook-form'
 import { Inertia } from '@inertiajs/inertia'
-import Article from '../../../../app/Models/Article'
-import Layout from '../../Layout'
+import Layout from '../../layout'
+import { Article } from '@/types/article'
 
 type EditArticleProps = {
     article: Article
