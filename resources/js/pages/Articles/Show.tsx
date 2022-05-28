@@ -17,15 +17,19 @@ import Layout from '../../layout'
 import { InertiaLink } from '@inertiajs/inertia-react'
 import { Article } from '@/types/article'
 import { Inertia } from '@inertiajs/inertia'
+import { User } from '@/types/user'
 
 type ShowArticleProps = {
     article: Article
+    user?: User
 }
 
 const ShowArticle = (props: ShowArticleProps) => {
     const [isLoading, setIsLoading] = useState(false)
     const { isOpen, onOpen, onClose } = useDisclosure()
     const cancelRef = useRef(null)
+
+    console.log(props.article)
 
     const handleRemove = () => {
         setIsLoading(true)
@@ -44,12 +48,18 @@ const ShowArticle = (props: ShowArticleProps) => {
                         {props.article.name}
                     </Text>
                     <Spacer />
-                    <InertiaLink href={`/articles/${props.article.id}/edit`}>
-                        <Button colorScheme="blue">Modifer</Button>
-                    </InertiaLink>
-                    <Button colorScheme="red" onClick={onOpen}>
-                        Supprimer
-                    </Button>
+                    {props?.user.id === props.article.user.id && (
+                        <>
+                            <InertiaLink
+                                href={`/articles/${props.article.id}/edit`}
+                            >
+                                <Button colorScheme="blue">Modifer</Button>
+                            </InertiaLink>
+                            <Button colorScheme="red" onClick={onOpen}>
+                                Supprimer
+                            </Button>
+                        </>
+                    )}
                 </HStack>
                 <Text>{props.article.description}</Text>
             </VStack>

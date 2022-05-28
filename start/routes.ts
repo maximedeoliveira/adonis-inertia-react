@@ -23,7 +23,11 @@ import Route from '@ioc:Adonis/Core/Route'
 Route.get('/', 'ArticlesController.index')
 
 // Articles
-Route.resource('articles', 'ArticlesController')
+Route.resource('articles', 'ArticlesController').middleware({
+    store: ['auth'],
+    update: ['auth'],
+    destroy: ['auth'],
+})
 
 // Login
 Route.get('/login', 'AuthController.loginForm').middleware('guest')
